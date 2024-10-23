@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Navbaar from './components/Navbaar';
+import JobSeekerLogin from './components/JobSeekerLogin/JobSeekerLogin';
+import SignUpForm from './components/SignUpForm';
+import EmployerLoginForm from './components/EmployerLoginForm/EmployerLoginForm';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+     <Navbaar/>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<JobSeekerLogin />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/employer-login" element={<EmployerLoginForm />} /> {/* Route for EmployerLogin */}
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
 export default App;
