@@ -1,4 +1,4 @@
-// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbaar from './components/Navbaar';
@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<JobSeekerLogin />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/employer-login" element={<EmployerLoginForm />} /> {/* Route for EmployerLogin */}
+          <Route path="/employer-login" element={<EmployerLoginForm />} /> 
         </Routes>
       </div>
     </Router>

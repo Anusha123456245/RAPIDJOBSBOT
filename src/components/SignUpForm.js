@@ -1,7 +1,7 @@
-// src/SignUpForm.js
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SignUpForm.css'; // Optional: Create a CSS file for styling
+import './SignUpForm.css'; 
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
@@ -10,7 +10,7 @@ const SignUpForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' }); // Clear error on input change
+    setErrors({ ...errors, [name]: '' }); 
   };
 
   const validate = () => {

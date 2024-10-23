@@ -1,7 +1,7 @@
-// src/components/EmployerLoginForm/EmployerLoginForm.js
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './EmployerLoginForm.css'; // Optional CSS for styling
+import './EmployerLoginForm.css'; 
 
 const EmployerLoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });

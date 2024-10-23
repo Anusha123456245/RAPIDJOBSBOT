@@ -1,7 +1,7 @@
-// src/components/Navbaar.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbaar.css'; // Optional styling
+import './Navbaar.css'; 
 
 const Navbaar = () => {
   return (
