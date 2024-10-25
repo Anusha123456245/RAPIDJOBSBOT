@@ -1,4 +1,4 @@
-/* Navbar.css */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -10,7 +10,7 @@
   
   .nav-links {
     display: flex;
-    gap: 15px; /* Space between links */
+    gap: 15px; 
   }
   
   .nav-links a {

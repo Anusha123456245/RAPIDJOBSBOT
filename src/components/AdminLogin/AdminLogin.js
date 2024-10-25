@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './EmployerLoginForm.css';
+import './AdminLogin.css';
 
-const EmployerLogin = () => {
-  const [email, setEmail] = useState('');
+const AdminLogin = () => {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -11,16 +11,16 @@ const EmployerLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/users?email=${email}`);
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/users?username=${username}`);
       const data = response.data;
 
       if (data.length === 0) {
-        setError('Employer not found');
+        setError('Admin not found');
         return;
       }
 
-      if (password === 'employer123') {
-        alert('Employer Login Successful!');
+      if (password === 'admin123') {
+        alert('Admin Login Successful!');
       } else {
         setError('Invalid password');
       }
@@ -33,16 +33,16 @@ const EmployerLogin = () => {
   return (
     <div className="login-container">
       <form onSubmit={handleLogin} autoComplete="off">
-        <input type="text" name="fake-input" style={{ display: 'none' }} />
+        <input type="text" name="fake-field" style={{ display: 'none' }} />
 
-        <h2>Employer Login</h2>
+        <h2>Admin Login</h2>
         <div className="input-group">
-          <label>Email:</label>
+          <label>Username:</label>
           <input
-            type="email"
-            name="unique-email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            name="unique-username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             autoComplete="off"
             required
           />
@@ -65,4 +65,4 @@ const EmployerLogin = () => {
   );
 };
 
-export default EmployerLogin;
+export default AdminLogin;

@@ -1,0 +1,127 @@
+
+.home-page {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-page h1 {
+    margin-bottom: 20px;
+    font-size: 3em; 
+    color: #2c3e50; 
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s; 
+  }
+  
+  .home-page form {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .home-page input {
+    padding: 14px;
+    width: 350px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border 0.3s, box-shadow 0.3s; 
+  }
+  
+  .home-page input:focus {
+    border: 1px solid #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+  }
+  
+  .home-page button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .home-page button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+  }
+  
+  .home-page h2 {
+    margin: 30px 0 20px;
+    font-size: 2.5em; 
+    color: #34495e; 
+  }
+  
+  .home-page ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .home-page ul li {
+    margin: 15px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 220px; 
+  }
+  
+  .home-page ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    .home-page input {
+      width: 80%; 
+    }
+  
+    .home-page button {
+      width: 100%; 
+    }
+  
+    .home-page ul {
+      flex-direction: column; 
+      align-items: center;
+    }
+  
+    .home-page ul li {
+      width: 90%; 
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .home-page {
+    animation: fadeIn 1s; 
+  }
+  

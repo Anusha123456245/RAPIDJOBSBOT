@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+        <h2>Create an Account</h2>
         <div className="input-group">
           <label htmlFor="username">Username</label>
           <input
