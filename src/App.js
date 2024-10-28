@@ -5,7 +5,8 @@ import HomePage from './components/HomePage/HomePage';
 import JobSeekerLogin from './components/JobSeekerLogin/JobSeekerLogin';
 import EmployerLoginForm from './components/EmployerLoginForm/EmployerLoginForm';
 import AdminLogin from './components/AdminLogin/AdminLogin';
-import ForgotPassword from './components/ForgotPassword/ForgotPassword'; // Ensure the correct path
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'; 
+
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/employer-login" element={<EmployerLoginForm />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          {/* Optionally, add a NotFound component for handling 404s */}
         </Routes>
+       
       </div>
     </Router>
+    
   );
 }
 

@@ -1,59 +1,119 @@
-.login-container {
-  width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+
+.wrapper {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px; 
+  background-color: #ffffff;
+  border-radius: 12px; 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); 
+  transition: all 0.3s ease; 
 }
 
-h2 {
+h1 {
   text-align: center;
+  margin-bottom: 25px; 
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  font-weight: bold; 
 }
 
-.input-group {
-  margin-bottom: 15px;
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.input-box input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 12px 40px; 
+  border: 2px solid #ccc; 
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
-input:focus {
-  border-color: #007bff;
-  outline: none;
+.input-box input:focus {
+  border-color: #4CAF50; 
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+  outline: none; 
 }
 
-.error-message {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.input-box input:focus + .icon {
+  color: #4CAF50; 
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+}
+
+.remember input {
+  margin-right: 5px; 
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+button:hover {
+  background-color: #45a049; 
+  transform: translateY(-2px); 
+}
+
+button:active {
+  transform: translateY(0); 
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease; 
+}
+
+.forgot-password:hover {
+  color: #0056b3; 
+  text-decoration: none; 
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link p {
+  color: #555;
+}
+
+.error-message {
+  color: #d9534f; 
+  margin-bottom: 10px; 
+  text-align: center; 
 }

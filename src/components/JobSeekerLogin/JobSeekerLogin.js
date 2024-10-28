@@ -1,94 +1,92 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import './JobSeekerLogin.css';
+import { FaUserAlt } from "react-icons/fa";
+import { CiLock } from "react-icons/ci";
 
-const JobSeekerLogin = () => {
+const LoginForm = () => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  
-  // Initialize navigate
+  const [remember, setRemember] = useState(false);
   const navigate = useNavigate(); 
 
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      const response = await axios.post('https://jsonplaceholder.typicode.com/users', {
-        username,
-        email,
-        password,
-      });
-      const data = response.data;
-
-      if (data.length === 0) {
-        setError('Job seeker not found');
-      } else {
-        if (password === 'jobseeker123') {
-          alert('Job Seeker Login Successful!');
-          navigate('/'); // Navigate to home page on successful login
-        } else {
-          setError('Invalid password');
-        }
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError('An error occurred during login.');
-    } finally {
-      setLoading(false);
+    if (validateForm()) {
+      console.log('Logging in with:', { username, password, remember });
     }
   };
 
+  const validateForm = () => {
+    if (!username || !password) {
+      setError('Both username and password are required.');
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
+  const handleForgotPassword = () => {
+    navigate('/forgot-password'); 
+  };
+
   return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} autoComplete="off">
-        <input type="text" name="fake-input" style={{ display: 'none' }} />
-        
-        <h2>Job Seeker Login</h2>
-        <div className="input-group">
-          <label>Username:</label>
+    <div className='wrapper'>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <h1>Login</h1>
+
+        {error && <div className="error-message">{error}</div>}
+
+        <div className='input-box'>
           <input
             type="text"
-            name="username"
+            name="fakeuser"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             autoComplete="off"
             required
           />
+          <FaUserAlt className='icon' />
         </div>
-        <div className="input-group">
-          <label>Password:</label>
+
+        <div className='input-box'>
           <input
             type="password"
-            name="password"
+            name="fakepassword"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="new-password"
             required
           />
+          <CiLock className='icon' />
         </div>
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
+
+        <div className='remember-forgot'>
+          <div className="remember">
+            <input
+              type="checkbox"
+              id="remember"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />
+            <label htmlFor="remember">Remember</label>
+          </div>
+          <button type="button" className="forgot-password" onClick={handleForgotPassword}>
+            Forgot Password
+          </button>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <div className='register-link'>
+          <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
       </form>
     </div>
   );
 };
 
-export default JobSeekerLogin;
+export default LoginForm;
