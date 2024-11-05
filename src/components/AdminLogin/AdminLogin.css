@@ -1,51 +1,156 @@
+/* Wrapper for the login form */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
 
-.login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Form container styling */
+form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  max-width: 90%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Form title styling */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: #ffdddd;
+  color: #d8000c;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Input box styling */
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s;
+}
+
+.input-box input:focus {
+  outline: none;
+  border-color: #2575fc;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+}
+
+/* Icons inside input fields */
+.input-box .icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.input-box input:focus + .icon {
+  color: #2575fc;
+}
+
+/* Remember and forgot password container */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-forgot .remember label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #2575fc;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: #6a11cb;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+}
+
+/* Register link */
+.register-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.register-button {
+  background: none;
+  border: none;
+  color: #2575fc;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.register-button:hover {
+  color: #6a11cb;
+}
+
+/* Animation for form entrance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .input-group {
-    margin-bottom: 15px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 12px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  .register-link {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
+}
