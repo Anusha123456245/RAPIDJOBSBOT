@@ -1,65 +1,106 @@
+// JobSeekerLogin.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 import './AdminLogin.css';
+import { FaUserAlt } from "react-icons/fa";
+import { CiLock } from "react-icons/ci";
 
-const AdminLogin = () => {
+const AdminLogin= () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [remember, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); 
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
     try {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/users?username=${username}`);
-      const data = response.data;
+      const response = await axios.post('http://localhost:5000/v1/api/jobseekers/login', formData);
 
-      if (data.length === 0) {
-        setError('Admin not found');
-        return;
-      }
+      setSuccessMessage(response.data.message); // Display success message
+      localStorage.setItem('token', response.data.token); // Store JWT token in local storage
 
-      if (password === 'admin123') {
-        alert('Admin Login Successful!');
-      } else {
-        setError('Invalid password');
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError('An error occurred during login.');
+      // Redirect or navigate to the dashboard or another page if needed
+      // window.location.href = '/dashboard';
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setErrorMessage(error.response?.data?.message || 'Login failed');
     }
   };
 
-  return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} autoComplete="off">
-        <input type="text" name="fake-field" style={{ display: 'none' }} />
+  const validateForm = () => {
+    if (!username || !password) {
+      setError('Both username and password are required.');
+      return false;
+    }
+    setError('');
+    return true;
+  };
 
-        <h2>Admin Login</h2>
-        <div className="input-group">
-          <label>Username:</label>
+  const handleRegister = () => {
+    navigate('/jobseeker'); // Navigate to registration page
+  };
+
+  return (
+    <div className="login-wrapper">
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <h1>Login</h1>
+
+        {error && <div className="error-message">{error}</div>}
+
+        <div className="input-box">
           <input
             type="text"
-            name="unique-username"
+            name="fakeuser"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            autoComplete="off"
+            autoComplete="new-username" // Avoid browser autofill
             required
           />
+          <FaUserAlt className="icon" />
         </div>
-        <div className="input-group">
-          <label>Password:</label>
+
+        <div className="input-box">
           <input
             type="password"
-            name="new-password"
+            name="fakepassword"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="new-password"
+            autoComplete="new-password" // Avoid browser autofill
             required
           />
+          <CiLock className="icon" />
         </div>
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit">Login</button>
+
+        <div className="remember-forgot">
+          <div className="remember">
+            <input
+              type="checkbox"
+              id="remember"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />
+            <label htmlFor="remember">Remember</label>
+          </div>
+          <button type="button" className="forgot-password" onClick={() => navigate('/forgot-password')}>
+            Forgot Password
+          </button>
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
+
+        <div className="register-link">
+          <p>Don't have an account? 
+            <button onClick={handleRegister} className="register-button">Register</button>
+          </p>
+        </div>
       </form>
     </div>
   );

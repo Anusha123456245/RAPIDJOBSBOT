@@ -1,127 +1,155 @@
-
+/* Container for the home page */
 .home-page {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-  }
-  
-  .home-page h1 {
-    margin-bottom: 20px;
-    font-size: 3em; 
-    color: #2c3e50; 
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-    animation: slideIn 1s; 
-  }
-  
-  .home-page form {
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 1s;
+  min-height: 100vh;
+}
+
+/* Title styling */
+.home-page h1 {
+  margin-bottom: 25px;
+  font-size: 3.5em;
+  color: #2c3e50;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  animation: slideIn 1s;
+}
+
+/* Sub-heading styling */
+.home-page h2 {
+  margin: 40px 0 20px;
+  font-size: 2.8em;
+  color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Search form */
+.home-page form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  width:1500px;
+}
+
+.home-page input {
+  padding: 16px;
+  width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+}
+
+.home-page input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  background-color: #f9f9f9;
+}
+
+/* Button styling */
+.home-page button {
+  padding: 16px 35px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-page button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* List of items (e.g., job categories or posts) */
+.home-page ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.home-page ul li {
+  width: 250px;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.home-page ul li h3 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+
+.home-page ul li p {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.home-page ul li:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Footer */
+.home-page footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
   .home-page input {
-    padding: 14px;
-    width: 350px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: border 0.3s, box-shadow 0.3s; 
+    width: 80%;
   }
-  
-  .home-page input:focus {
-    border: 1px solid #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
-  }
-  
+
   .home-page button {
-    padding: 14px 30px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
   }
-  
-  .home-page button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); 
-  }
-  
-  .home-page h2 {
-    margin: 30px 0 20px;
-    font-size: 2.5em; 
-    color: #34495e; 
-  }
-  
+
   .home-page ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .home-page ul li {
-    margin: 15px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 220px; 
+    width: 90%;
   }
-  
-  .home-page ul li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
   }
-  
-  @media (max-width: 600px) {
-    .home-page input {
-      width: 80%; 
-    }
-  
-    .home-page button {
-      width: 100%; 
-    }
-  
-    .home-page ul {
-      flex-direction: column; 
-      align-items: center;
-    }
-  
-    .home-page ul li {
-      width: 90%; 
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    opacity: 1;
   }
-  
-  .home-page {
-    animation: fadeIn 1s; 
-  }
-  
+}

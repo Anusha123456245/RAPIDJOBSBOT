@@ -1,25 +1,19 @@
-
+// HomePage.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css'; 
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  
-  
-  const jobCategories = ['IT & Software', 'Marketing', 'Design', 'Sales', 'Customer Support'];
-
-  
-  const jobSuggestions = [
-    'Frontend Developer - Remote',
-    'Digital Marketing Specialist',
-    'UX/UI Designer',
-    'Sales Manager',
-    'Customer Support Executive',
-  ];
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSearch = (e) => {
     e.preventDefault();
     alert(`Searching for: ${searchTerm}`);
+  };
+
+  const handleJobSeeker = () => {
+    navigate('/Jobseeker'); // Navigate to Job Seeker Registration page
   };
 
   return (
@@ -36,16 +30,14 @@ const HomePage = () => {
       </form>
       <h2>Job Categories</h2>
       <ul>
-        {jobCategories.map((category, index) => (
-          <li key={index}>{category}</li>
-        ))}
+        {/* Add job categories here */}
       </ul>
       <h2>AI-Driven Job Suggestions</h2>
       <ul>
-        {jobSuggestions.map((job, index) => (
-          <li key={index}>{job}</li>
-        ))}
+        {/* Add job suggestions here */}
       </ul>
+      {/* Button to navigate to  Employer page */}
+      <button onClick={handleJobSeeker}>Go to Jobseeker Registration</button>
     </div>
   );
 };
